@@ -2,7 +2,7 @@ package pro.buildmysoftware.webflux.operators;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.webflux.hello.HelloHandler;
+import pro.buildmysoftware.webflux.handler.HelloHandler;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 

@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.hello;
+package pro.buildmysoftware.webflux.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

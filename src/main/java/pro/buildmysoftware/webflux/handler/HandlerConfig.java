@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.hello;
+package pro.buildmysoftware.webflux.handler;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-public class Config {
+public class HandlerConfig {
 	@Bean
 	public RouterFunction<ServerResponse> route(HelloHandler helloHandler) {
 		return RouterFunctions.route(RequestPredicates
