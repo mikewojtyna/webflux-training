@@ -45,6 +45,6 @@ public class WebsocketNumbersHandlerTest {
 
 	private URI uri(String path) throws URISyntaxException {
 		return new URI(String
-			.format("ws://localhost:%s/websocket/hello", port));
+			.format("ws://localhost:%s%s", port, path));
 	}
 }
