@@ -23,8 +23,8 @@ public class FiniteAndInfiniteFluxExamplesTest {
 
 		flux.log().subscribe(l -> {
 			try {
-				Thread.sleep(5000);
 				System.out.println("Subscriber 0 " + l);
+				Thread.sleep(5000);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
