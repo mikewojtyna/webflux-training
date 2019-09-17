@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.operators;
+package pro.buildmysoftware.webflux;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
