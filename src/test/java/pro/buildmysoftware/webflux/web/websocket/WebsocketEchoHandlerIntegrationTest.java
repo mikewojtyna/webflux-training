@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.websocket;
+package pro.buildmysoftware.webflux.web.websocket;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

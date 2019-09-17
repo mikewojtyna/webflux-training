@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.handler;
+package pro.buildmysoftware.webflux.web.handler;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

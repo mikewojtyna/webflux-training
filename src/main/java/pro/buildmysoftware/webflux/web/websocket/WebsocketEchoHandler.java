@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.websocket;
+package pro.buildmysoftware.webflux.web.websocket;
 
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;

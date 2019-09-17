@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.websocket;
+package pro.buildmysoftware.webflux.web.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
