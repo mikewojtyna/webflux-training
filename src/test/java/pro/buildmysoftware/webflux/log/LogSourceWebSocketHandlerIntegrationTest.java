@@ -48,7 +48,7 @@ public class LogSourceWebSocketHandlerIntegrationTest {
 		// given
 		Collection<String> collectedLogEntries = new ArrayList<>();
 		WebSocketClient client = new ReactorNettyWebSocketClient();
-		WebSocketHandler handler = session -> session.receive().take(3)
+		WebSocketHandler handler = session -> session.receive().take(1)
 			.map(WebSocketMessage::getPayloadAsText).log()
 			.doOnNext(logEntry -> {
 				collectedLogEntries.add(logEntry);
