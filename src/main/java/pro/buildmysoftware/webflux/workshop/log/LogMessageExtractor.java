@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.logworkshop;
+package pro.buildmysoftware.webflux.workshop.log;
 
 import org.reactivestreams.Publisher;
 
