@@ -2,6 +2,7 @@ package pro.buildmysoftware.webflux.operators;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
@@ -51,5 +52,23 @@ public class ColdAndHotStreamsExampleTest {
 			.doOnNext(System.out::println).share();
 
 		Thread.sleep(2000);
+	}
+
+	// @formatter:off
+	@DisplayName(
+		"connectable flux example"
+	)
+	// @formatter:on
+	@Test
+	void test() throws Exception {
+		ConnectableFlux<Long> source = Flux
+			.interval(Duration.ofSeconds(1)).publish();
+
+		source.subscribe(System.out::println);
+		source.connect();
+		Thread.sleep(2000);
+		source.subscribe(System.out::println);
+
+		Thread.sleep(5000);
 	}
 }
