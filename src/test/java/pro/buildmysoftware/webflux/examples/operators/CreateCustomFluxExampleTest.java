@@ -1,4 +1,4 @@
-package pro.buildmysoftware.webflux.operators;
+package pro.buildmysoftware.webflux.examples.operators;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,7 +60,7 @@ public class CreateCustomFluxExampleTest {
 			}
 		}).start();
 
-		flux.doOnNext(System.out::println).log().blockLast();
+		flux.take(3).doOnNext(System.out::println).log().blockLast();
 	}
 
 	private class FluxQueue implements Consumer<FluxSink<Integer>> {
