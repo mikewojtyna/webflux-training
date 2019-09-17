@@ -3,15 +3,15 @@ package pro.buildmysoftware.webflux.log;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 
-public class LogConsumer {
+public class LogLevelExtractor {
 	private LogSource logSource;
 
-	public LogConsumer(LogSource logSource) {
+	public LogLevelExtractor(LogSource logSource) {
 		this.logSource = logSource;
 	}
 
-	public Publisher<String> extractCategories() {
+	public Publisher<String> extractLogLevels() {
 		return Flux.from(logSource.logEntries())
-			.map(LogEntry::getCategory);
+			.map(LogEntry::getLevel);
 	}
 }

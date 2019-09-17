@@ -20,10 +20,11 @@ public class LogConsumerTest {
 		LogSource logSource = mock(LogSource.class);
 		TestPublisher<LogEntry> testPublisher = TestPublisher.create();
 		when(logSource.logEntries()).thenReturn(testPublisher);
-		LogConsumer logConsumer = new LogConsumer(logSource);
+		LogLevelExtractor logConsumer =
+			new LogLevelExtractor(logSource);
 
 		// when
-		StepVerifier.create(logConsumer.extractCategories())
+		StepVerifier.create(logConsumer.extractLogLevels())
 
 			// then
 			.then(() -> testPublisher

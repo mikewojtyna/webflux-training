@@ -4,6 +4,6 @@ import lombok.Value;
 
 @Value
 public class LogEntry {
-	private final String category;
+	private final String level;
 	private final String msg;
 }

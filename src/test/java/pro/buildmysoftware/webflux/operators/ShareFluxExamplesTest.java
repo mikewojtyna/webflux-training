@@ -11,9 +11,9 @@ public class ShareFluxExamplesTest {
 	@DisplayName("share flux example")
 	@Test
 	void test() throws Exception {
-		Flux<Integer> integerFlux = Flux.<Integer>create(sink -> {
-			blockProduce(sink);
-		}).share();
+		Flux<Integer> integerFlux =
+			Flux.<Integer>create(sink -> blockProduce(sink))
+			.share();
 
 		integerFlux.subscribe(i -> System.out
 			.println("First " + "subscriber: " + i));
