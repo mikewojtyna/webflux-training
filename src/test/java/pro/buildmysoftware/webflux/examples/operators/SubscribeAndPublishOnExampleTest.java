@@ -1,11 +1,11 @@
-package pro.buildmysoftware.webflux.operators;
+package pro.buildmysoftware.webflux.examples.operators;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-public class SubscribeAndPublishOnTest {
+public class SubscribeAndPublishOnExampleTest {
 	// @formatter:off
 	@DisplayName("subscribeOn example")
 	// @formatter:on
