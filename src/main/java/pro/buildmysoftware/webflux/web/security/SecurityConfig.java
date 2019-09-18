@@ -13,7 +13,7 @@ public class SecurityConfig {
 	@Bean
 	public MapReactiveUserDetailsService userDetailsService() {
 		UserDetails user = User.withUsername("user")
-			.password("{noo}user").roles("USER").build();
+			.password("{noop}user").roles("USER").build();
 		return new MapReactiveUserDetailsService(user);
 	}
 
