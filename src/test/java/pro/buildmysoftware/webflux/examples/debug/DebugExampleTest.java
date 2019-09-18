@@ -9,18 +9,32 @@ import reactor.core.publisher.Hooks;
 public class DebugExampleTest {
 	// @formatter:off
 	@DisplayName(
-		"show debugging example"
+		"show debugging example using global hooks (costly)"
 	)
 	// @formatter:on
 	@Test
-	void test() throws Exception {
+	void test0() throws Exception {
 		Hooks.onOperatorDebug();
+		Flux<String> flux =
+			Flux.just(1, 2).log().flatMap(this::handle);
+		flux.subscribe();
+	}
+
+	// @formatter:off
+	@DisplayName(
+		"show debugging example using checkpoint"
+	)
+	// @formatter:on
+	@Test
+	void test1() throws Exception {
 		Flux<String> flux = Flux.just(1, 2).log().flatMap(this::handle)
-			.log();
+			// checkpoint should be constructed near the end of
+			// the stream, to be able to instrument all operations
+			.checkpoint();
 		flux.subscribe();
 	}
 
 	private Publisher<String> handle(int i) {
-		throw new RuntimeException();
+		throw new RuntimeException("exception when processing " + i);
 	}
 }
