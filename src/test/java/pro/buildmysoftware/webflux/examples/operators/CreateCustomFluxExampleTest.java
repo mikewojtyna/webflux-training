@@ -63,6 +63,24 @@ public class CreateCustomFluxExampleTest {
 		flux.take(3).doOnNext(System.out::println).log().blockLast();
 	}
 
+	@DisplayName("using generate method to create signals sequentially")
+	@Test
+	void generate() throws Exception {
+		Flux<Integer> generatedFlux =
+			Flux.generate(synchronousSink -> {
+			synchronousSink.next(new Random().nextInt());
+		});
+
+		Flux<Integer> numbersSequentially = Flux
+			.generate(() -> 0, (state, synchronousSink) -> {
+				synchronousSink.next(state);
+				return state + 1;
+			});
+
+		generatedFlux.take(5).subscribe(System.out::println);
+		numbersSequentially.take(3).subscribe(System.out::println);
+	}
+
 	private class FluxQueue implements Consumer<FluxSink<Integer>> {
 		private BlockingQueue<Integer> queue;
 
@@ -75,7 +93,6 @@ public class CreateCustomFluxExampleTest {
 			new Thread(() -> {
 				while (true) {
 					try {
-						Thread.sleep(1000);
 						fluxSink.next(queue.take());
 					}
 					catch (InterruptedException e) {
