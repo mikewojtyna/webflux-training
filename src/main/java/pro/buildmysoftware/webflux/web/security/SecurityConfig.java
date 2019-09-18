@@ -20,8 +20,8 @@ public class SecurityConfig {
 	@Bean
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 		http.authorizeExchange().pathMatchers("/secured")
-			.authenticated().anyExchange().permitAll().and()
-			.httpBasic();
+			.authenticated().and().authorizeExchange().anyExchange()
+			.permitAll().and().csrf().disable();
 		return http.build();
 	}
 }
