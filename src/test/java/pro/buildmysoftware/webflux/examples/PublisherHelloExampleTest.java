@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class PublisherHelloExampleTest {
+
 	@DisplayName("show mono example")
 	@Test
 	void mono() throws Exception {

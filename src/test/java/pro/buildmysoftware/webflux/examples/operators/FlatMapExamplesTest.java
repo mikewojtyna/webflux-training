@@ -7,6 +7,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 public class FlatMapExamplesTest {
+
 	@DisplayName("flat map blocking example")
 	@Test
 	void test() throws Exception {

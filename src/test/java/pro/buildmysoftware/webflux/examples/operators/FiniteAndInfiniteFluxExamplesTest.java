@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 public class FiniteAndInfiniteFluxExamplesTest {
+
 	@DisplayName("show map operator")
 	@Test
 	void mapFinite() throws Exception {
@@ -23,7 +24,7 @@ public class FiniteAndInfiniteFluxExamplesTest {
 
 		flux.log().subscribe(l -> {
 			try {
-				System.out.println("Subscriber 0 " + l);
+				System.out.println("Subscriber 0: " + l);
 				Thread.sleep(5000);
 			}
 			catch (InterruptedException e) {

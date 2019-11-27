@@ -7,12 +7,13 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 public class OperatorExamplesTest {
+
 	@DisplayName("map example")
 	@Test
 	void mapExample() throws Exception {
-		StepVerifier.create(Mono.just("hello").log().map(Hello::new)
-			.map(m -> m)).expectNext(new Hello("hello"))
-			.expectComplete().verify();
+		StepVerifier.create(Mono.just("hello").log().map(Hello::new))
+			.expectNext(new Hello("hello")).expectComplete()
+			.verify();
 	}
 
 	@DisplayName("flat map example")

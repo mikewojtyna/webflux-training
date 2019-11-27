@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class ErrorHandlingExampleTest {
+
 	// @formatter:off
 	@DisplayName(
 		"return default error value on exception"
@@ -23,7 +24,7 @@ public class ErrorHandlingExampleTest {
 
 	// @formatter:off
 	@DisplayName(
-		"test"
+		"use resume on exception"
 	)
 	// @formatter:on
 	@Test

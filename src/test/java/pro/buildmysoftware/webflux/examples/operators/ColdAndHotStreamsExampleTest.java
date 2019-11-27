@@ -8,6 +8,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 public class ColdAndHotStreamsExampleTest {
+
 	// @formatter:off
 	@DisplayName(
 		"cold stream example"
@@ -17,9 +18,9 @@ public class ColdAndHotStreamsExampleTest {
 	void cold() throws Exception {
 		Flux<Long> ticks = Flux.interval(Duration.ofSeconds(1));
 
-		ticks.subscribe(System.out::println);
+		ticks.subscribe(n -> System.out.println("Subscriber 0: " + n));
 		Thread.sleep(2000);
-		ticks.subscribe(System.out::println);
+		ticks.subscribe(n -> System.out.println("Subscriber 1: " + n));
 
 		Thread.sleep(5000);
 	}
@@ -34,16 +35,16 @@ public class ColdAndHotStreamsExampleTest {
 		Flux<Long> ticks =
 			Flux.interval(Duration.ofSeconds(1)).share();
 
-		ticks.subscribe(System.out::println);
+		ticks.subscribe(n -> System.out.println("Subscriber 0: " + n));
 		Thread.sleep(2000);
-		ticks.subscribe(System.out::println);
+		ticks.subscribe(n -> System.out.println("Subscriber 1: " + n));
 
 		Thread.sleep(5000);
 	}
 
 	// @formatter:off
 	@DisplayName(
-		"hot stream still requires at least subscription example"
+		"hot stream still requires at least one subscription"
 	)
 	// @formatter:on
 	@Test
