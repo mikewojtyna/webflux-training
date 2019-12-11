@@ -12,8 +12,12 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class HandlerConfig {
 
 	@Bean
-	public RouterFunction<ServerResponse> route(HelloHandler helloHandler) {
-		return RouterFunctions
-			.route(GET("/hello"), helloHandler::hello);
+	public RouterFunction<ServerResponse> route(HelloHandler helloHandler,
+						    MessagesHandler messagesHandler) {
+		return RouterFunctions.route(GET("/hello"),
+			helloHandler::hello)
+			.and(RouterFunctions
+				.route(GET("/messages"),
+					messagesHandler::handle));
 	}
 }
