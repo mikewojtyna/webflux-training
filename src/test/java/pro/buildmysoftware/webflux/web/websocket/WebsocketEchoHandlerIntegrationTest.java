@@ -13,12 +13,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class WebsocketEchoHandlerIntegrationTest {
+
 	private static final long TIMEOUT_SECS = 5;
 	@LocalServerPort
 	private String port;
@@ -34,7 +36,7 @@ public class WebsocketEchoHandlerIntegrationTest {
 	void test() throws Exception {
 		// given
 		WebSocketClient client = new ReactorNettyWebSocketClient();
-		List<String> messages = List.of("hi", "hello", "greetings");
+		List<String> messages = listOf("hi", "hello", "greetings");
 		List<String> receivedMessages = new ArrayList<>();
 
 		// when
@@ -43,6 +45,10 @@ public class WebsocketEchoHandlerIntegrationTest {
 		// then
 		assertThat(receivedMessages)
 			.containsExactly("hi", "hello", "greetings");
+	}
+
+	private List<String> listOf(String... args) {
+		return Arrays.asList(args);
 	}
 
 	private void sendAllMsgs(WebSocketClient client, List<String> allMsgs,
