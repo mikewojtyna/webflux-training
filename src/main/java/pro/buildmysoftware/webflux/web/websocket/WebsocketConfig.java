@@ -10,16 +10,18 @@ import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAd
 import pro.buildmysoftware.webflux.log.LogSource;
 import pro.buildmysoftware.webflux.log.LogSourceWebSocketHandler;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
 public class WebsocketConfig {
+
 	@Bean
 	public HandlerMapping handlerMapping(WebsocketNumbersHandler numbersHandler, WebsocketEchoHandler echoHandler, LogSourceWebSocketHandler logSourceWebSocketHandler) {
 		SimpleUrlHandlerMapping simpleUrlHandlerMapping =
 			new SimpleUrlHandlerMapping();
-		simpleUrlHandlerMapping.setUrlMap(Map
-			.of("/websocket/hello", numbersHandler,
+		simpleUrlHandlerMapping
+			.setUrlMap(mapOf("/websocket/hello", numbersHandler,
 				"/websocket" + "/echo", echoHandler,
 				"/websocket/log", logSourceWebSocketHandler));
 		simpleUrlHandlerMapping.setOrder(Ordered.HIGHEST_PRECEDENCE);
@@ -49,5 +51,18 @@ public class WebsocketConfig {
 	@Bean
 	public WebSocketHandlerAdapter adapter() {
 		return new WebSocketHandlerAdapter();
+	}
+
+	private Map<String, ?> mapOf(String s,
+				     WebsocketNumbersHandler numbersHandler,
+				     String s1,
+				     WebsocketEchoHandler echoHandler,
+				     String s2,
+				     LogSourceWebSocketHandler logSourceWebSocketHandler) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put(s, numbersHandler);
+		map.put(s1, logSourceWebSocketHandler);
+		map.put(s2, logSourceWebSocketHandler);
+		return map;
 	}
 }
