@@ -32,8 +32,8 @@ public class ColdAndHotStreamsExampleTest {
 	// @formatter:on
 	@Test
 	void hot() throws Exception {
-		Flux<Long> ticks =
-			Flux.interval(Duration.ofSeconds(1)).share();
+		Flux<Long> ticks = Flux.interval(Duration.ofSeconds(1)).share()
+			.log();
 
 		ticks.subscribe(n -> System.out.println("Subscriber 0: " + n));
 		Thread.sleep(2000);
