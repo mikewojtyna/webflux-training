@@ -38,7 +38,9 @@ public class ErrorHandlingExampleTest {
 			if (throwable instanceof RuntimeException) {
 				return fallbackPublisher;
 			}
-			return Mono.error(throwable);
+			return Mono
+				.error(new CustomException("error after " +
+					"receiving signal 1", throwable));
 		}).subscribe(System.out::println);
 	}
 }
