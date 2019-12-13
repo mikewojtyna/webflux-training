@@ -61,7 +61,7 @@ public class WebsocketConfig {
 				     LogSourceWebSocketHandler logSourceWebSocketHandler) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put(s, numbersHandler);
-		map.put(s1, logSourceWebSocketHandler);
+		map.put(s1, echoHandler);
 		map.put(s2, logSourceWebSocketHandler);
 		return map;
 	}
