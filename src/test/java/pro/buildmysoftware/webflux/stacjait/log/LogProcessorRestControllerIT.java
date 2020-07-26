@@ -9,6 +9,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+import java.time.Duration;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -38,6 +40,7 @@ class LogProcessorRestControllerIT {
 			.assertNext(logEntry -> assertThat(logEntry.getLevel())
 				.isEqualTo(Level.WARN))
 			.assertNext(logEntry -> assertThat(logEntry.getLevel())
-				.isEqualTo(Level.WARN)).verifyComplete();
+				.isEqualTo(Level.WARN)).thenCancel()
+			.verify(Duration.ofSeconds(10));
 	}
 }
